@@ -1,0 +1,338 @@
+/* Hero Container */
+.hero-container {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  margin: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  margin-top: 100px;
+}
+
+/* Hero Content Layout */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 3rem;
+}
+
+/* Text Content */
+.hero-text {
+  flex: 1;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #3a4a6d;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #4a5568;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.hero-emoji {
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+/* Call to Action */
+.hero-cta-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+  width: fit-content;
+}
+
+.hero-cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(106, 17, 203, 0.4);
+}
+
+.hero-button-icon {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Scroll Prompt */
+.hero-scroll-prompt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.hero-scroll-arrow {
+  animation: bounce 2s infinite;
+  font-size: 15px;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40%{
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Image/Illustration Area */
+.hero-image {
+  position: relative;
+  flex: 1;
+  min-height: 300px;
+  width: 100%;
+}
+
+/* Cute Character */
+.hero-cute-character {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: #ff9e9e;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  right: 20%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Eyes - Fixed position */
+.hero-cute-character::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 15px; /* Slightly squinted sad eyes */
+  background: #3a4a6d;
+  border-radius: 50%;
+  top: 40%;
+  left: 30%;
+  box-shadow: 50px 0 #3a4a6d;
+}
+
+/* Mouth - Sad face by default */
+.hero-cute-character::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  border-top: 4px solid #3a4a6d; /* Frown */
+  border-radius: 50% 50% 0 0;
+  top: 65%; /* Positioned slightly lower for sad face */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+/* Hover State - Turns happy */
+.hero-cute-character.hover {
+  transform: translateY(-50%) scale(1.15);
+  background: #ff8a8a;
+  box-shadow: 0 15px 30px rgba(255, 158, 158, 0.3);
+}
+
+/* Eyes open wider when happy */
+.hero-cute-character.hover::before {
+  height: 20px; /* More open eyes */
+}
+
+/* Mouth turns to smile on hover */
+.hero-cute-character.hover::after {
+  border-top: none;
+  border-bottom: 4px solid #3a4a6d; /* Smile */
+  border-radius: 0 0 50% 50%;
+  top: 60%; /* Moves up slightly when smiling */
+  width: 80px; /* Wider smile */
+}
+
+/* Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(-50%) translateY(0); }
+  50% { transform: translateY(-50%) translateY(-10px); }
+}
+
+.hero-cute-character.hover {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Sparkle Effect - only appears when happy */
+.sparkle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-cute-character.hover .sparkle {
+  opacity: 1;
+}
+
+.sparkle::before,
+.sparkle::after {
+  content: '✨';
+  position: absolute;
+  font-size: 1.2rem;
+  animation: sparkle 2s linear infinite;
+  pointer-events: none;
+}
+
+.sparkle::before {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.sparkle::after {
+  top: 20%;
+  left: 70%;
+  animation-delay: 0.5s;
+}
+
+/* Blush Effect - more visible when happy */
+.blush {
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  background: rgba(255, 150, 150, 0.3); /* Subtle when sad */
+  border-radius: 50%;
+  top: 50%;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.hero-cute-character.hover .blush {
+  background: rgba(255, 150, 150, 0.6); /* More visible when happy */
+}
+
+.blush.left {
+  left: 25%;
+}
+
+.blush.right {
+  right: 25%;
+}
+/* Book Stack */
+.hero-book-stack {
+  position: absolute;
+  width: 120px;
+  height: 150px;
+  background: #ffd166;
+  right: 10%;
+  bottom: 10%;
+  border-radius: 5px;
+  z-index: 0;
+  box-shadow: 
+    0 -5px 0 rgba(0, 0, 0, 0.1),
+    0 5px 0 rgba(0, 0, 0, 0.1),
+    5px 0 0 #ff9e9e,
+    10px 0 0 #a0e7e5,
+    15px 0 0 #b5ead7;
+}
+
+/* Stars */
+.hero-stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-stars::before, .hero-stars::after {
+  content: '★';
+  position: absolute;
+  color: #ffd166;
+  font-size: 1.2rem;
+}
+
+.hero-stars::before {
+  top: 20%;
+  left: 15%;
+  animation: twinkle 3s infinite;
+}
+
+.hero-stars::after {
+  top: 30%;
+  right: 25%;
+  animation: twinkle 4s infinite 1s;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .hero-content {
+    flex-direction: row;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+css
+/* Background Styles */
+.hero-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* or your preferred height */
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1; /* Ensures content appears above */
+}
+
+/* Make sure your content container has proper stacking */
+.hero-container {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}

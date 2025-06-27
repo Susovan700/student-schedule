@@ -1,0 +1,338 @@
+/* Cute Color Palette with black text and light background */
+:root {
+  --primary: #a78bfa;
+  --secondary: #fbcfe8;
+  --accent: #fbbf24;
+  --text: #000000; /* Changed to black */
+  --bg: #f9fafb; /* Light background */
+  --error: #ef4444;
+}
+
+.schedule-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin-top: 39px;
+}
+
+.schedule-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.schedule-header h1 {
+  color: var(--primary);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.schedule-header p {
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.cute-input {
+  padding: 0.8rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s;
+  width: 100%;
+  background-color: white;
+  color: black;
+}
+
+.cute-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+}
+
+.cute-select {
+  padding: 0.8rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: white;
+  color: black;
+}
+
+/* Button Styles */
+.cute-button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cute-button:hover {
+  background-color: #8b5cf6;
+  transform: translateY(-2px);
+}
+
+.cute-button:disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.generate-button {
+  width: 100%;
+  justify-content: center;
+  font-size: 1.2rem;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Subject Cards */
+.subject-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+}
+
+.subject-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  flex: 1;
+  color: black;
+}
+
+.difficulty-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: black;
+}
+
+.difficulty-btn {
+  border: none;
+  background: #e5e7eb;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: black;
+}
+
+.difficulty-btn.active {
+  background: var(--secondary);
+  transform: scale(1.1);
+}
+
+.subject-input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.subject-input-group input {
+  flex: 1;
+}
+
+.info-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  background-color: var(--bg);
+}
+
+.borderless-input:-webkit-autofill,
+.borderless-input:-webkit-autofill:hover, 
+.borderless-input:-webkit-autofill:focus, 
+.borderless-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #f9fafb inset !important;
+    -webkit-text-fill-color: black !important;
+    background-color: #f9fafb !important;
+}
+
+
+.borderless-input {
+    padding: 0.8rem 0;
+    border: none;
+    border-bottom: 2px solid #e5e7eb;
+    font-size: 1rem;
+    background: transparent;
+    width: 100%;
+    transition: all 0.3s;
+    color: black;
+    background-color: #f9fafb !important; 
+}
+
+.borderless-input:focus {
+    outline: none;
+    border-bottom-color: var(--primary);
+    background-color: #f9fafb !important;
+}
+
+.borderless-select {
+  padding: 0.8rem 0;
+  border: none;
+  border-bottom: 2px solid #e5e7eb;
+  font-size: 1rem;
+  color: black;
+  background: #f9fafb;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+  background-size: 1.5em;
+}
+
+.borderless-select:focus {
+  outline: none;
+  border-bottom-color: var(--primary);
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: black;
+}
+
+.error-message {
+  color: var(--error);
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.no-subjects {
+  text-align: center;
+  color: black;
+  opacity: 0.7;
+  padding: 1rem;
+}
+
+#name {
+  color: black;
+  background-color: var(--bg);
+}
+
+@media (max-width: 768px) {
+  .info-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .subject-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.9; /* Optional: adjust if you want some transparency */
+}
+
+/* Ensure content is above background */
+.page-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Optional: Add a semi-transparent overlay to improve text readability */
+.page-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7); /* White with 70% opacity */
+}
+
+/* Time Section Styles */
+.time-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  background-color: var(--bg);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.time-section .input-group {
+  margin-bottom: 0;
+}
+
+/* Date Input Styling */
+input[type="date"] {
+  padding: 0.8rem 0;
+  border: none;
+  border-bottom: 2px solid #e5e7eb;
+  font-size: 1rem;
+  background: transparent;
+  width: 100%;
+  color: black;
+}
+
+input[type="date"]:focus {
+  outline: none;
+  border-bottom-color: var(--primary);
+}
+
+/* Remove default date picker icon in some browsers */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .time-section {
+    grid-template-columns: 1fr;
+  }
+}
