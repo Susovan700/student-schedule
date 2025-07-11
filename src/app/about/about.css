@@ -7,14 +7,27 @@
   margin-top: 50px;
 }
 
-/* Hero Section */
+.page-background {
+  position: fixed; /* Changed from absolute to fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-image: url('/back.jpg'); /* Added directly here */
+}
+
+
 .about-header {
   text-align: center;
   margin-bottom: 4rem;
   padding: 3rem 0;
 }
 
-.hero-content {
+.about-content {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -23,7 +36,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.hero-title {
+.about-title {
   font-size: 3.5rem;
   font-weight: 800;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -34,14 +47,14 @@
   text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.hero-subtitle {
+.about-subtitle {
   font-size: 1.5rem;
   color: #666;
   margin-bottom: 1.5rem;
   font-weight: 500;
 }
 
-.hero-decoration {
+.about-decoration {
   font-size: 2rem;
   margin-top: 1rem;
   animation: bounce 2s infinite;
@@ -403,11 +416,11 @@
     padding: 1rem;
   }
   
-  .hero-title {
+  .about-title {
     font-size: 2.5rem;
   }
   
-  .hero-subtitle {
+  .about-subtitle {
     font-size: 1.2rem;
   }
   

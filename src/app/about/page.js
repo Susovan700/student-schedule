@@ -22,10 +22,10 @@ export default function About() {
                 
                 <div className="about-container">
                     <header className="about-header">
-                        <div className="hero-content">
-                            <h1 className="hero-title">📚 Study Schedule Wizard</h1>
-                            <p className="hero-subtitle">Your Personal Study Success Companion</p>
-                            <div className="hero-decoration">✨ 📖 ✨</div>
+                        <div className="about-content">
+                            <h1 className="about-title">📚 Focus Fuel</h1>
+                            <p className="about-subtitle">Your Personal Study Success Companion</p>
+                            <div className="about-decoration">✨ 📖 ✨</div>
                         </div>
                     </header>
 

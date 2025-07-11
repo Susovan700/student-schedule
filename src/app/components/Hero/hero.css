@@ -20,14 +20,11 @@
   margin: 0 auto;
   gap: 3rem;
 }
-
-/* Text Content */
 .hero-text {
   flex: 1;
   z-index: 2;
   text-align: center;
 }
-
 .hero-title {
   font-size: 3rem;
   font-weight: 800;
