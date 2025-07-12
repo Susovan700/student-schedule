@@ -13,7 +13,7 @@ export default function Hero() {
 
   return (
     <div className="hero-wrapper">
-      <div className="hero-background" style={{ backgroundImage: "url('/back.jpg')" }}></div>
+      <div className="hero-background" style={{ backgroundImage: "url('/backnew.jpg')" }}></div>
       
       <section className="hero-container">
         <div className="hero-content">

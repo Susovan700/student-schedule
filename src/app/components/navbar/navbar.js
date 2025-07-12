@@ -21,7 +21,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="navbar-brand">
-          <h1>Focus Fuel</h1>
+          <h1 className="hi">StudyForge</h1>
           <div className="fire-animation">
             <span className="flame">🔥</span>
             <span className="sparkle">✨</span>

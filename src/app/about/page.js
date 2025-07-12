@@ -14,7 +14,7 @@ export default function About() {
         <div className="page-wrapper">
             <div 
                 className="page-background" 
-                style={{ backgroundImage: "url('/back.jpg')" }}
+                style={{ backgroundImage: "url('/backnew.jpg')" }}
             ></div>
             
             <div className="page-container">

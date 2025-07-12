@@ -55,6 +55,8 @@ function CalendarPicker({
   const [currentDate, setCurrentDate] = useState(
     selectedDate ? new Date(selectedDate) : new Date()
   );
+  const [showYearPicker, setShowYearPicker] = useState(false);
+  const [showMonthPicker, setShowMonthPicker] = useState(false);
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -101,9 +103,37 @@ function CalendarPicker({
   const handleDateClick = (date) => {
     if (isDateDisabled(date)) return;
 
-    const formattedDate = date.toISOString().split("T")[0];
+    // Fix: Use local date formatting to avoid timezone issues
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+    
     onDateSelect(formattedDate);
     onClose();
+  };
+
+  const handleYearSelect = (selectedYear) => {
+    const newDate = new Date(currentDate);
+    newDate.setFullYear(selectedYear);
+    setCurrentDate(newDate);
+    setShowYearPicker(false);
+  };
+
+  const handleMonthSelect = (selectedMonth) => {
+    const newDate = new Date(currentDate);
+    newDate.setMonth(selectedMonth);
+    setCurrentDate(newDate);
+    setShowMonthPicker(false);
+  };
+
+  const generateYearOptions = () => {
+    const currentYear = new Date().getFullYear();
+    const years = [];
+    for (let i = currentYear - 10; i <= currentYear + 10; i++) {
+      years.push(i);
+    }
+    return years;
   };
 
   return (
@@ -116,45 +146,90 @@ function CalendarPicker({
           >
             ←
           </button>
-          <h3 className="calendar-title">
-            {MONTHS[month]} {year}
-          </h3>
+          <div className="calendar-title-container">
+            <button 
+              className="calendar-title-btn"
+              onClick={() => setShowMonthPicker(!showMonthPicker)}
+            >
+              {MONTHS[month]}
+            </button>
+            <button 
+              className="calendar-title-btn"
+              onClick={() => setShowYearPicker(!showYearPicker)}
+            >
+              {year}
+            </button>
+          </div>
           <button className="calendar-nav-btn" onClick={() => navigateMonth(1)}>
             →
           </button>
         </div>
 
-        <div className="calendar-grid">
-          {DAYS.map((day) => (
-            <div key={day} className="calendar-day-header">
-              {day}
+        {showYearPicker && (
+          <div className="calendar-picker-dropdown">
+            <div className="picker-grid">
+              {generateYearOptions().map((yearOption) => (
+                <button
+                  key={yearOption}
+                  className={`picker-option ${yearOption === year ? 'selected' : ''}`}
+                  onClick={() => handleYearSelect(yearOption)}
+                >
+                  {yearOption}
+                </button>
+              ))}
             </div>
-          ))}
+          </div>
+        )}
 
-          {days.map((date, index) => {
-            const isCurrentMonth = date.getMonth() === month;
-            const isDisabled = isDateDisabled(date);
-            const isSelected = isDateSelected(date);
-            const isTodayDate = isToday(date);
+        {showMonthPicker && (
+          <div className="calendar-picker-dropdown">
+            <div className="picker-grid">
+              {MONTHS.map((monthName, index) => (
+                <button
+                  key={index}
+                  className={`picker-option ${index === month ? 'selected' : ''}`}
+                  onClick={() => handleMonthSelect(index)}
+                >
+                  {monthName}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
-            return (
-              <button
-                key={index}
-                className={`
-                  calendar-day 
-                  ${isCurrentMonth ? "" : "other-month"} 
-                  ${isDisabled ? "disabled" : ""} 
-                  ${isSelected ? "selected" : ""} 
-                  ${isTodayDate ? "today" : ""}
-                `}
-                onClick={() => handleDateClick(date)}
-                disabled={isDisabled}
-              >
-                {date.getDate()}
-              </button>
-            );
-          })}
-        </div>
+        {!showYearPicker && !showMonthPicker && (
+          <div className="calendar-grid">
+            {DAYS.map((day) => (
+              <div key={day} className="calendar-day-header">
+                {day}
+              </div>
+            ))}
+
+            {days.map((date, index) => {
+              const isCurrentMonth = date.getMonth() === month;
+              const isDisabled = isDateDisabled(date);
+              const isSelected = isDateSelected(date);
+              const isTodayDate = isToday(date);
+
+              return (
+                <button
+                  key={index}
+                  className={`
+                    calendar-day 
+                    ${isCurrentMonth ? "" : "other-month"} 
+                    ${isDisabled ? "disabled" : ""} 
+                    ${isSelected ? "selected" : ""} 
+                    ${isTodayDate ? "today" : ""}
+                  `}
+                  onClick={() => handleDateClick(date)}
+                  disabled={isDisabled}
+                >
+                  {date.getDate()}
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         <div className="calendar-footer">
           <button className="calendar-close-btn" onClick={onClose}>
@@ -182,6 +257,7 @@ export default function SchedulePage() {
   const [dailyStudyHours, setDailyStudyHours] = useState(6);
   const [sessionDuration, setSessionDuration] = useState(45);
   const [breakDuration, setBreakDuration] = useState(15);
+  const [preferredStartTime, setPreferredStartTime] = useState("09:00");
 
   const validateDates = (start, end) => {
     if (start && end) {
@@ -296,13 +372,13 @@ export default function SchedulePage() {
 
   return (
     <div className="page-wrapper">
-      <div className="page-background" style={{ backgroundImage: "url('/back.jpg')" }}></div>
+      <div className="page-background" style={{ backgroundImage: "url('/backnew.jpg')" }}></div>
 
       <div className="page-container">
         <Navbar currentPage="schedule" />
         <div className="schedule-container">
           <div className="schedule-header">
-            <h1>📚 Study Schedule Wizard</h1>
+            <h1>📚Focus Fuel </h1>
             <p>Let's create your perfect study plan!</p>
           </div>
 
@@ -420,6 +496,16 @@ export default function SchedulePage() {
                   className="cute-input"
                 />
               </div>
+
+              <div className="input-group">
+                <label>🌅 Preferred Start Time</label>
+                <input
+                  type="time"
+                  value={preferredStartTime}
+                  onChange={(e) => setPreferredStartTime(e.target.value)}
+                  className="cute-input"
+                />
+              </div>
             </div>
 
             <div className="study-stats">
@@ -440,6 +526,10 @@ export default function SchedulePage() {
                   <div>
                     {Math.floor(totalBreakTime / 60)}h {totalBreakTime % 60}m
                   </div>
+                </div>
+                <div className="stat-box start-time">
+                  <div>Study Starts At</div>
+                  <div>{preferredStartTime}</div>
                 </div>
               </div>
             </div>
