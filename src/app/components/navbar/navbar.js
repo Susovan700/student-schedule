@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -32,8 +31,7 @@ export default function Navbar() {
         <div className="nav-links">
           <Link 
             href="/" 
-            className={`nav-link ${pathname === '/' ? 'active' : ''}`}
-          >
+            className={`nav-link ${pathname === '/' ? 'active' : ''}`}>
             <span className="nav-text">Home</span>
             <span className="nav-icon">🏠</span>
           </Link>
@@ -52,7 +50,6 @@ export default function Navbar() {
             <span className="nav-icon">ℹ️</span>
           </Link>
         </div>
-        
         <div className="nav-highlight"></div>
       </div>
     </nav>
